@@ -1,0 +1,233 @@
+{
+  "edos_holdout": {
+    "source": "EDOS_holdout",
+    "n_test": 2996,
+    "precision": 0.4413,
+    "recall": 0.831,
+    "sensitivity": 0.831,
+    "specificity": 0.6623,
+    "f1": 0.5765,
+    "classification_report": {
+      "0": {
+        "precision": 0.9243076923076923,
+        "recall": 0.6622574955908289,
+        "f1-score": 0.771641407654765,
+        "support": 2268.0
+      },
+      "1": {
+        "precision": 0.4412837345003647,
+        "recall": 0.8310439560439561,
+        "f1-score": 0.5764649833253931,
+        "support": 728.0
+      },
+      "accuracy": 0.7032710280373832,
+      "macro avg": {
+        "precision": 0.6827957134040284,
+        "recall": 0.7466507258173924,
+        "f1-score": 0.674053195490079,
+        "support": 2996.0
+      },
+      "weighted avg": {
+        "precision": 0.806937384803108,
+        "recall": 0.7032710280373832,
+        "f1-score": 0.7242153606214596,
+        "support": 2996.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        1502,
+        766
+      ],
+      [
+        123,
+        605
+      ]
+    ],
+    "note": "EDOS sexist class \u2014 NOT corpus-specific; use corpus_validation when available"
+  },
+  "detoxify_independent": {
+    "source": "detoxify_independent_crosscheck",
+    "n_sample": 498,
+    "note": "Detoxify is NOT human ground truth \u2014 see docs/DETOXIFY_DISAGREEMENT_ANALYSIS.md",
+    "precision_model_vs_detox": 0.6071,
+    "recall_model_vs_detox": 0.2931,
+    "f1_model_vs_detox": 0.3953,
+    "cohen_kappa": 0.2872,
+    "model_harm_rate": 0.2329,
+    "detoxify_harm_rate": 0.1124,
+    "disagreement_export": "data/labelled/validation_disagreements_full.csv",
+    "n_disagreements": 104,
+    "confusion_matrix": [
+      [
+        360,
+        22
+      ],
+      [
+        82,
+        34
+      ]
+    ]
+  },
+  "annotation_agreement": {
+    "n_dual_annotated": 360,
+    "cohen_kappa_perpetrator": 1.0,
+    "kappa_acceptable": true,
+    "n_disputed_rows": 0,
+    "disputed_row_indices": [],
+    "action_if_kappa_low": "Revise codebook (docs/ANNOTATION_CODEBOOK.md), discuss disagreements, re-annotate disputed rows"
+  },
+  "corpus_validation": {
+    "source": "corpus_human_validation",
+    "n_annotated": 360,
+    "precision": 0.8812,
+    "recall": 0.9889,
+    "sensitivity": 0.9889,
+    "specificity": 0.8667,
+    "f1": 0.9319,
+    "confusion_matrix": [
+      [
+        156,
+        24
+      ],
+      [
+        2,
+        178
+      ]
+    ],
+    "by_platform": {
+      "Reddit": {
+        "n": 120,
+        "precision": 0.8824,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.8667,
+        "f1": 0.9375
+      },
+      "Telegram": {
+        "n": 80,
+        "precision": 0.8837,
+        "recall": 0.95,
+        "sensitivity": 0.95,
+        "specificity": 0.875,
+        "f1": 0.9157
+      },
+      "Twitter": {
+        "n": 40,
+        "precision": 0.9091,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.9,
+        "f1": 0.9524
+      },
+      "YouTube": {
+        "n": 120,
+        "precision": 0.8696,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.85,
+        "f1": 0.9302
+      }
+    },
+    "note": "Gold labels from dual-annotator adjudication on project corpus"
+  },
+  "held_out_v2_primary": {
+    "label": "HELD_OUT_PRIMARY",
+    "status": "ready",
+    "metrics": {
+      "precision": 0.2333,
+      "recall": 0.8235,
+      "sensitivity": 0.8235,
+      "specificity": 0.4458,
+      "f1": 0.3636,
+      "confusion_matrix": [
+        [
+          74,
+          92
+        ],
+        [
+          6,
+          28
+        ]
+      ],
+      "n": 200
+    },
+    "by_platform": {
+      "Reddit": {
+        "precision": 0.2143,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.459,
+        "f1": 0.3529,
+        "confusion_matrix": [
+          [
+            28,
+            33
+          ],
+          [
+            0,
+            9
+          ]
+        ],
+        "n": 70
+      },
+      "Telegram": {
+        "precision": 0.1818,
+        "recall": 0.5,
+        "sensitivity": 0.5,
+        "specificity": 0.4375,
+        "f1": 0.2667,
+        "confusion_matrix": [
+          [
+            14,
+            18
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "n": 40
+      },
+      "Twitter": {
+        "precision": 0.6923,
+        "recall": 0.8182,
+        "sensitivity": 0.8182,
+        "specificity": 0.5556,
+        "f1": 0.75,
+        "confusion_matrix": [
+          [
+            5,
+            4
+          ],
+          [
+            2,
+            9
+          ]
+        ],
+        "n": 20
+      },
+      "YouTube": {
+        "precision": 0.1395,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.4219,
+        "f1": 0.2449,
+        "confusion_matrix": [
+          [
+            27,
+            37
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "n": 70
+      }
+    },
+    "source_file": "data/labelled/v2/gold_heldout.csv",
+    "frozen_threshold_hash": "f501b708268b7e75f9eca9b94ae581cc59a0357a0b1dfa73c4b2263890510b04"
+  },
+  "reporting_rule": "Primary validity = Protocol v2 held-out metrics. June corpus_validation F1\u22480.93 is in-sample/tuning only."
+}

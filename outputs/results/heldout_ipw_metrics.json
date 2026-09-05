@@ -1,0 +1,373 @@
+{
+  "created_at": "2026-08-04T08:59:17.935991+00:00",
+  "sampling_seed": 20260712,
+  "band_definitions": {
+    "source": "src/annotation_protocol_v2.py::_band",
+    "high": "gendered_harm_proba >= 0.55",
+    "mid": "0.35 <= gendered_harm_proba < 0.55",
+    "low": "gendered_harm_proba < 0.35",
+    "note": "Appendix A illustrative cutpoints (0.34/0.40) are NOT used; weights follow the actual Protocol v2 sampling script."
+  },
+  "protocol_omission_note": "Protocol v2.0 specified confidence-band stratification for IAA but omitted inverse-probability reweighting for corpus metric estimation. Faculty Round 3 identified the omission; this worksheet corrects it.",
+  "overall": {
+    "unweighted": {
+      "TP_w": 28.0,
+      "FP_w": 92.0,
+      "FN_w": 6.0,
+      "TN_w": 74.0,
+      "sensitivity": 0.8235,
+      "specificity": 0.4458,
+      "precision": 0.2333,
+      "recall": 0.8235,
+      "f1": 0.3636,
+      "weighted_flag_rate": 0.6,
+      "sum_weights": 200.0,
+      "n_rows": 200
+    },
+    "weighted": {
+      "TP_w": 2196.9762,
+      "FP_w": 5251.0834,
+      "FN_w": 340.9167,
+      "TN_w": 12701.0238,
+      "sensitivity": 0.8657,
+      "specificity": 0.7075,
+      "precision": 0.295,
+      "recall": 0.8657,
+      "f1": 0.44,
+      "weighted_flag_rate": 0.3635,
+      "sum_weights": 20490.0,
+      "n_rows": 200
+    },
+    "bootstrap_weighted_ci": {
+      "precision": {
+        "mean": 0.2967,
+        "ci_low": 0.1777,
+        "ci_high": 0.4089
+      },
+      "recall": {
+        "mean": 0.8681,
+        "ci_low": 0.7086,
+        "ci_high": 0.9889
+      },
+      "sensitivity": {
+        "mean": 0.8681,
+        "ci_low": 0.7086,
+        "ci_high": 0.9889
+      },
+      "specificity": {
+        "mean": 0.7082,
+        "ci_low": 0.6628,
+        "ci_high": 0.751
+      },
+      "f1": {
+        "mean": 0.4393,
+        "ci_low": 0.2926,
+        "ci_high": 0.5627
+      },
+      "weighted_flag_rate": {
+        "mean": 0.3637,
+        "ci_low": 0.3366,
+        "ci_high": 0.3917
+      }
+    },
+    "sample_flag_rate_unweighted": 0.6,
+    "explanation_paragraph": "Protocol v2 stratified the gold set by classifier-confidence band so that ambiguous mid/high-score cases appear in inter-annotator agreement. That design over-represents high-score rows relative to the corpus, which inflates the apparent false-positive rate. Inverse-probability weights w = N_band/n_band restore each row to the mass of corpus comments it represents. Weighted Se/Sp/precision/F1 are therefore the corpus estimates; unweighted metrics remain valid descriptions of the stratified sample only (and of IAA design), not of platform-wide classifier performance."
+  },
+  "by_platform": {
+    "Reddit": {
+      "unweighted": {
+        "TP_w": 9.0,
+        "FP_w": 33.0,
+        "FN_w": 0.0,
+        "TN_w": 28.0,
+        "sensitivity": 1.0,
+        "specificity": 0.459,
+        "precision": 0.2143,
+        "recall": 1.0,
+        "f1": 0.3529,
+        "weighted_flag_rate": 0.6,
+        "sum_weights": 70.0,
+        "n_rows": 70
+      },
+      "weighted": {
+        "TP_w": 229.0952,
+        "FP_w": 1154.7857,
+        "FN_w": 0.0,
+        "TN_w": 3087.1191,
+        "sensitivity": 1.0,
+        "specificity": 0.7278,
+        "precision": 0.1655,
+        "recall": 1.0,
+        "f1": 0.2841,
+        "weighted_flag_rate": 0.3095,
+        "sum_weights": 4471.0,
+        "n_rows": 70
+      },
+      "bootstrap_weighted_ci": {
+        "precision": {
+          "mean": 0.1677,
+          "ci_low": 0.0728,
+          "ci_high": 0.2835
+        },
+        "recall": {
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0
+        },
+        "sensitivity": {
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0
+        },
+        "specificity": {
+          "mean": 0.7292,
+          "ci_low": 0.6465,
+          "ci_high": 0.7971
+        },
+        "f1": {
+          "mean": 0.2835,
+          "ci_low": 0.1356,
+          "ci_high": 0.4417
+        },
+        "weighted_flag_rate": {
+          "mean": 0.3082,
+          "ci_low": 0.2489,
+          "ci_high": 0.3819
+        }
+      },
+      "corpus_flag_rate_on_sampling_pool": 0.2943,
+      "sanity_check_weighted_flag_near_corpus": true,
+      "sanity_gap": 0.0152
+    },
+    "Telegram": {
+      "unweighted": {
+        "TP_w": 4.0,
+        "FP_w": 18.0,
+        "FN_w": 4.0,
+        "TN_w": 14.0,
+        "sensitivity": 0.5,
+        "specificity": 0.4375,
+        "precision": 0.1818,
+        "recall": 0.5,
+        "f1": 0.2667,
+        "weighted_flag_rate": 0.55,
+        "sum_weights": 40.0,
+        "n_rows": 40
+      },
+      "weighted": {
+        "TP_w": 7.0,
+        "FP_w": 83.4167,
+        "FN_w": 314.9167,
+        "TN_w": 1556.6667,
+        "sensitivity": 0.0217,
+        "specificity": 0.9491,
+        "precision": 0.0774,
+        "recall": 0.0217,
+        "f1": 0.034,
+        "weighted_flag_rate": 0.0461,
+        "sum_weights": 1962.0,
+        "n_rows": 40
+      },
+      "bootstrap_weighted_ci": {
+        "precision": {
+          "mean": 0.0793,
+          "ci_low": 0.0176,
+          "ci_high": 0.1624
+        },
+        "recall": {
+          "mean": 0.0787,
+          "ci_low": 0.0044,
+          "ci_high": 0.7512
+        },
+        "sensitivity": {
+          "mean": 0.0787,
+          "ci_low": 0.0044,
+          "ci_high": 0.7512
+        },
+        "specificity": {
+          "mean": 0.9482,
+          "ci_low": 0.9218,
+          "ci_high": 0.9699
+        },
+        "f1": {
+          "mean": 0.0472,
+          "ci_low": 0.0084,
+          "ci_high": 0.1734
+        },
+        "weighted_flag_rate": {
+          "mean": 0.0464,
+          "ci_low": 0.0303,
+          "ci_high": 0.061
+        }
+      },
+      "corpus_flag_rate_on_sampling_pool": 0.0525,
+      "sanity_check_weighted_flag_near_corpus": true,
+      "sanity_gap": 0.0064
+    },
+    "Twitter": {
+      "unweighted": {
+        "TP_w": 9.0,
+        "FP_w": 4.0,
+        "FN_w": 2.0,
+        "TN_w": 5.0,
+        "sensitivity": 0.8182,
+        "specificity": 0.5556,
+        "precision": 0.6923,
+        "recall": 0.8182,
+        "f1": 0.75,
+        "weighted_flag_rate": 0.65,
+        "sum_weights": 20.0,
+        "n_rows": 20
+      },
+      "weighted": {
+        "TP_w": 1465.1667,
+        "FP_w": 857.1667,
+        "FN_w": 26.0,
+        "TN_w": 67.6667,
+        "sensitivity": 0.9826,
+        "specificity": 0.0732,
+        "precision": 0.6309,
+        "recall": 0.9826,
+        "f1": 0.7684,
+        "weighted_flag_rate": 0.9612,
+        "sum_weights": 2416.0,
+        "n_rows": 20
+      },
+      "bootstrap_weighted_ci": {
+        "precision": {
+          "mean": 0.6293,
+          "ci_low": 0.2686,
+          "ci_high": 0.88
+        },
+        "recall": {
+          "mean": 0.9806,
+          "ci_low": 0.9571,
+          "ci_high": 1.0
+        },
+        "sensitivity": {
+          "mean": 0.9806,
+          "ci_low": 0.9571,
+          "ci_high": 1.0
+        },
+        "specificity": {
+          "mean": 0.098,
+          "ci_low": 0.0269,
+          "ci_high": 0.2506
+        },
+        "f1": {
+          "mean": 0.7537,
+          "ci_low": 0.4201,
+          "ci_high": 0.9325
+        },
+        "weighted_flag_rate": {
+          "mean": 0.9612,
+          "ci_low": 0.9483,
+          "ci_high": 0.9677
+        }
+      },
+      "corpus_flag_rate_on_sampling_pool": 0.9433,
+      "sanity_check_weighted_flag_near_corpus": true,
+      "sanity_gap": 0.0179
+    },
+    "YouTube": {
+      "unweighted": {
+        "TP_w": 6.0,
+        "FP_w": 37.0,
+        "FN_w": 0.0,
+        "TN_w": 27.0,
+        "sensitivity": 1.0,
+        "specificity": 0.4219,
+        "precision": 0.1395,
+        "recall": 1.0,
+        "f1": 0.2449,
+        "weighted_flag_rate": 0.6143,
+        "sum_weights": 70.0,
+        "n_rows": 70
+      },
+      "weighted": {
+        "TP_w": 495.7143,
+        "FP_w": 3155.7143,
+        "FN_w": 0.0,
+        "TN_w": 7989.5714,
+        "sensitivity": 1.0,
+        "specificity": 0.7169,
+        "precision": 0.1358,
+        "recall": 1.0,
+        "f1": 0.2391,
+        "weighted_flag_rate": 0.3137,
+        "sum_weights": 11641.0,
+        "n_rows": 70
+      },
+      "bootstrap_weighted_ci": {
+        "precision": {
+          "mean": 0.1377,
+          "ci_low": 0.0356,
+          "ci_high": 0.2543
+        },
+        "recall": {
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0
+        },
+        "sensitivity": {
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0
+        },
+        "specificity": {
+          "mean": 0.7177,
+          "ci_low": 0.6743,
+          "ci_high": 0.768
+        },
+        "f1": {
+          "mean": 0.2387,
+          "ci_low": 0.0698,
+          "ci_high": 0.4055
+        },
+        "weighted_flag_rate": {
+          "mean": 0.3134,
+          "ci_low": 0.2666,
+          "ci_high": 0.3505
+        }
+      },
+      "corpus_flag_rate_on_sampling_pool": 0.3221,
+      "sanity_check_weighted_flag_near_corpus": true,
+      "sanity_gap": 0.0084
+    }
+  },
+  "rogan_gladen": {
+    "Reddit": {
+      "observed_corpus_flag_rate": 0.2894,
+      "Se_w": 1.0,
+      "Sp_w": 0.7278,
+      "implied_FPR_1_minus_Sp_w": 0.2722,
+      "status": "corrected",
+      "prevalence_corrected_rate": 0.0236
+    },
+    "Telegram": {
+      "observed_corpus_flag_rate": 0.0639,
+      "Se_w": 0.0217,
+      "Sp_w": 0.9491,
+      "implied_FPR_1_minus_Sp_w": 0.0509,
+      "status": "undefined_youden_Se_plus_Sp_le_1",
+      "prevalence_corrected_rate": null
+    },
+    "YouTube": {
+      "observed_corpus_flag_rate": 0.3077,
+      "Se_w": 1.0,
+      "Sp_w": 0.7169,
+      "implied_FPR_1_minus_Sp_w": 0.2831,
+      "status": "corrected",
+      "prevalence_corrected_rate": 0.0343
+    }
+  },
+  "files": {
+    "band_table": "outputs/results/heldout_ipw_band_table.csv",
+    "gold_with_weights": "outputs/results/heldout_ipw_gold_weights.csv"
+  },
+  "sha256_inputs": {
+    "gold_heldout.csv": "4c54ef9be3909dfafdfbe560e890278777be3c82b6889884cbe6bca3e283bb2f",
+    "annotation_sample_master.csv": "9a9b0d8795eb89aade381cde71c7beb160a8ccb77ccdb7388e9f4aaac3fff1cb",
+    "this_script": "63aa2639c009e5ce5afb661b94ecd720167128f33bcb598ee329acf9eecc593e"
+  }
+}

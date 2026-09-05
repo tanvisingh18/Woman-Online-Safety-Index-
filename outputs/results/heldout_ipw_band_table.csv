@@ -1,0 +1,13 @@
+platform,band,band_definition,corpus_N,sample_n,weight_N_over_n
+Reddit,low,gendered_harm_proba < 0.35,2890,21,137.619048
+Reddit,mid,0.35 <= gendered_harm_proba < 0.55,935,21,44.52381
+Reddit,high,gendered_harm_proba >= 0.55,646,28,23.071429
+Telegram,low,gendered_harm_proba < 0.35,1824,12,152.0
+Telegram,mid,0.35 <= gendered_harm_proba < 0.55,110,12,9.166667
+Telegram,high,gendered_harm_proba >= 0.55,28,16,1.75
+Twitter,low,gendered_harm_proba < 0.35,78,6,13.0
+Twitter,mid,0.35 <= gendered_harm_proba < 0.55,94,6,15.666667
+Twitter,high,gendered_harm_proba >= 0.55,2244,8,280.5
+YouTube,low,gendered_harm_proba < 0.35,7316,21,348.380952
+YouTube,mid,0.35 <= gendered_harm_proba < 0.55,2565,21,122.142857
+YouTube,high,gendered_harm_proba >= 0.55,1760,28,62.857143

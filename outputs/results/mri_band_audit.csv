@@ -1,0 +1,7 @@
+platform,MRI_actual,sensitivity_band,point_inside_band
+Twitter,72.77,[66.2–78.7],True
+Reddit,60.64,[59.3–74.9],True
+YouTube,82.28,[77.3–89.7],True
+Telegram,11.27,[10.6–26.3],True
+Facebook,84.34,[81.1–91.8],True
+Gab,34.38,[14.4–39.4],True

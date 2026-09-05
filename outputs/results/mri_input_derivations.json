@@ -1,0 +1,711 @@
+{
+  "definitions": {
+    "PDR": "Proactive Detection Rate (PDR): estimated share of policy-violating content detected/removed by automated or platform-initiated systems before a user report. Used as 20% sub-input: RemovalRate_adj = 0.80 \u00d7 reactive_removal + 0.20 \u00d7 PDR.",
+    "RAS": "Regulatory Accountability Score (RAS): transparent coding rubric (0\u20131) for DSA/VLOP transparency, law-enforcement cooperation, and documented regulatory pressure. Used as 30% sub-input: Consistency_adj = 0.70 \u00d7 reported_consistency + 0.30 \u00d7 RAS."
+  },
+  "mri_integration": {
+    "removal_adjusted": "RemovalRate_adj = 0.80 \u00d7 reactive_removal + 0.20 \u00d7 PDR",
+    "consistency_adjusted": "Consistency_adj = 0.70 \u00d7 reported_consistency + 0.30 \u00d7 RAS",
+    "mri": "MRI = 0.45 \u00d7 RemovalRate_adj + 0.30 \u00d7 SpeedScore + 0.25 \u00d7 Consistency_adj",
+    "speed": "SpeedScore = max(0, 1 \u2212 avg_response_hours / 720) \u00d7 100"
+  },
+  "PDR_derivations": {
+    "YouTube": {
+      "final_value": 0.72,
+      "source_id": "google_transparency_2023",
+      "source_document": "Google/YouTube Transparency Report 2023; CA AB 587 Q4 2023 report",
+      "source_url": "https://transparencyreport.google.com/youtube-policy/removals",
+      "raw_published_figures": [
+        {
+          "metric": "Comment removals first-detected by automated flagging",
+          "value": "99.5%",
+          "period": "Jul\u2013Sep 2023",
+          "citation": "Google Transparency Report Help Center, comment enforcement tables"
+        },
+        {
+          "metric": "Video removals first-detected by automated flagging",
+          "value": "96.1%",
+          "period": "Q4 2023",
+          "citation": "YouTube CA AB 587 Transparency Report (CA OAG filing), Q4 2023"
+        }
+      ],
+      "coding_rule": "PDR cannot be taken as 99.5% because comment removals are spam-dominated (~85%) and automated-first-detection \u2260 gendered-harm-specific proactive removal. Apply harm-relevance discount d=0.75 to video automated-first-detection anchor: PDR = 0.961 \u00d7 0.75 = 0.721 \u2192 0.72.",
+      "derivation_formula": "PDR = automated_first_detection_video \u00d7 harm_relevance_discount",
+      "derivation_steps": "0.961 \u00d7 0.75 = 0.72075 \u2192 round to 0.72"
+    },
+    "Reddit": {
+      "final_value": 0.38,
+      "source_id": "reddit_transparency_2023",
+      "source_document": "Reddit Transparency Report 2023; AutoModerator documentation",
+      "source_url": "https://www.redditinc.com/policies/transparency-report-2023",
+      "raw_published_figures": [
+        {
+          "metric": "Reactive removal rate (transparency CSV input)",
+          "value": "68%",
+          "period": "2023",
+          "citation": "data/transparency/moderation_reports.csv \u2190 Reddit Transparency Report 2023"
+        },
+        {
+          "metric": "AutoModerator / automated tooling prevalence",
+          "value": "documented platform-wide, no single published PDR %",
+          "period": "2023",
+          "citation": "Reddit transparency + moderation SoK (2023) \u2014 partial proactive tooling"
+        }
+      ],
+      "coding_rule": "Reddit publishes enforcement volumes but not a clean 'removed before report' % for harassment. Code PDR=0.38 as medium: below YouTube (heavy automation), above Telegram (minimal GBV proactive scan in private groups). Anchored below Meta/Google tier (~0.68\u20130.72) and above Telegram floor.",
+      "derivation_formula": "Expert-coded ordinal anchor on published automation evidence",
+      "derivation_steps": "Ordinal scale {Telegram:0.03, Reddit:0.38, YouTube:0.72} \u2014 documented in rubric"
+    },
+    "Telegram": {
+      "final_value": 0.03,
+      "source_id": "telegram_transparency_gap_2024",
+      "source_document": "BBC 2024; NBC 2024; Stanford Internet Observatory (cited in NBC)",
+      "source_url": "https://www.bbc.com/news/articles/cy54905nv0go",
+      "raw_published_figures": [
+        {
+          "metric": "Membership in NCMEC/IWF hash-sharing programmes",
+          "value": "Not a member (BBC 2024)",
+          "period": "2024",
+          "citation": "BBC \u2014 Telegram refused to join NCMEC/IWF child-protection schemes"
+        },
+        {
+          "metric": "Proactive GBV scan in private groups",
+          "value": "Not documented; private chats excluded from public moderation claims",
+          "period": "2024",
+          "citation": "NBC/Stanford \u2014 CSAM rules focus on public channels; private GBV ecosystem opaque"
+        },
+        {
+          "metric": "Telegram DSA report AI/algorithmic detection (public content)",
+          "value": "Millions of removals, but not convertible to GBV PDR",
+          "period": "2025",
+          "citation": "Telegram EU DSA Transparency Report 2025 \u2014 aggregate enforcement only"
+        }
+      ],
+      "coding_rule": "For gendered-harm / IBSA in private/semi-private ecosystems (AI Forensics 2026), proactive detection is negligible. Code PDR=0.03 as floor estimate (2\u20135% range) reflecting public-channel hash/AI tooling only, not abuse-network visibility.",
+      "derivation_formula": "Expert-coded floor within literature range 0.02\u20130.05",
+      "derivation_steps": "Lower bound of documented range \u2192 0.03"
+    },
+    "Twitter": {
+      "final_value": 0.45,
+      "source_id": "twitter_transparency_2023",
+      "source_document": "Twitter/X Transparency Report 2023",
+      "raw_published_figures": [
+        {
+          "metric": "Reactive removal rate (CSV)",
+          "value": "72%",
+          "period": "2023"
+        }
+      ],
+      "coding_rule": "Mid-tier automation vs Telegram; below YouTube. Supplementary panel only.",
+      "derivation_formula": "Expert-coded ordinal anchor",
+      "derivation_steps": "Between Reddit (0.38) and YouTube (0.72) \u2192 0.45"
+    },
+    "Facebook": {
+      "final_value": 0.68,
+      "source_id": "meta_transparency_2023",
+      "source_document": "Meta Community Standards Enforcement Report Q4 2023; Ranking Digital Rights 2023",
+      "source_url": "https://transparency.meta.com/",
+      "raw_published_figures": [
+        {
+          "metric": "Proactive detection rate (Meta CSE \u2014 content actioned before user report)",
+          "value": "~90%+ for several policy areas (aggregate; spam/fraud heavy)",
+          "period": "Q4 2023",
+          "citation": "Meta Transparency Center \u2014 proactive vs reactive share tables"
+        },
+        {
+          "metric": "Reactive removal input used in MRI CSV",
+          "value": "85%",
+          "period": "2023",
+          "citation": "data/transparency/moderation_reports.csv \u2190 Meta Transparency Q4 2023"
+        }
+      ],
+      "coding_rule": "Meta publishes high proactive % across policy areas, but harassment/bullying and gender-based harm are lower-automation than spam. Apply harm-relevance discount similar to YouTube: start from ~0.90 proactive share \u00d7 0.75 relevance \u2192 ~0.68. Place Facebook between Reddit (0.38) and YouTube (0.72).",
+      "derivation_formula": "PDR \u2248 published_proactive_share \u00d7 harm_relevance_discount",
+      "derivation_steps": "0.90 \u00d7 0.75 = 0.675 \u2192 round to 0.68",
+      "panel": "secondary_contextual \u2014 no live WHSI scrape for Facebook in this thesis"
+    },
+    "Gab": {
+      "final_value": 0.05,
+      "source_id": "gab_expert_coded_2023",
+      "source_document": "No public Gab transparency report; expert-coded ordinal estimate",
+      "source_url": null,
+      "raw_published_figures": [
+        {
+          "metric": "Published GBV / harassment proactive-detection %",
+          "value": "Not available",
+          "period": "2023",
+          "citation": "Gab does not publish Meta/Google-style enforcement transparency"
+        }
+      ],
+      "coding_rule": "EXPERT-CODED ESTIMATE (Faculty July Step 6). Gab markets itself as a minimal-moderation free-speech platform; no verifiable proactive GBV detection figures exist. Code PDR=0.05 as near-floor (above Telegram 0.03 only for residual public-post tooling), explicitly labelled estimate \u2014 NOT a measured rate. Secondary MRI panel only; excluded from primary YouTube/Reddit/Telegram results claims.",
+      "derivation_formula": "Expert-coded floor on ordinal scale {Telegram:0.03, Gab:0.05, Reddit:0.38, \u2026}",
+      "derivation_steps": "No published figure \u2192 ordinal floor 0.05 with explicit estimate label",
+      "panel": "secondary_expert_estimate"
+    }
+  },
+  "RAS_derivations": {
+    "YouTube": {
+      "final_value": 0.88,
+      "source_id": "ranking_digital_rights",
+      "source_document": "Ranking Digital Rights 2023; Google DSA/VLOP disclosures; Google LER",
+      "source_url": "https://rankingdigitalrights.org/",
+      "rubric_criteria": [
+        {
+          "criterion": "Publishes detailed transparency / DSA compliance",
+          "weight": 0.35,
+          "score": 0.95
+        },
+        {
+          "criterion": "Law-enforcement request cooperation (LER)",
+          "weight": 0.3,
+          "score": 0.9
+        },
+        {
+          "criterion": "Low recent regulatory enforcement pressure (2023)",
+          "weight": 0.35,
+          "score": 0.8
+        }
+      ],
+      "coding_rule": "RAS = weighted sum of rubric criteria (0\u20131 each).",
+      "derivation_formula": "0.35\u00d70.95 + 0.30\u00d70.90 + 0.35\u00d70.80",
+      "derivation_steps": "0.3325 + 0.27 + 0.28 = 0.8825 \u2192 0.88"
+    },
+    "Reddit": {
+      "final_value": 0.62,
+      "source_id": "ranking_digital_rights",
+      "source_document": "Ranking Digital Rights 2023; Reddit Transparency Report 2023",
+      "rubric_criteria": [
+        {
+          "criterion": "Transparency reporting (partial vs Google/Meta)",
+          "weight": 0.35,
+          "score": 0.7
+        },
+        {
+          "criterion": "Law-enforcement / legal request cooperation",
+          "weight": 0.3,
+          "score": 0.65
+        },
+        {
+          "criterion": "Regulatory standing (DSA, moderate scrutiny)",
+          "weight": 0.35,
+          "score": 0.55
+        }
+      ],
+      "coding_rule": "RAS = weighted rubric; mid-tier accountability.",
+      "derivation_formula": "0.35\u00d70.70 + 0.30\u00d70.65 + 0.35\u00d70.55",
+      "derivation_steps": "0.245 + 0.195 + 0.1925 = 0.6325 \u2192 0.62"
+    },
+    "Telegram": {
+      "final_value": 0.28,
+      "source_id": "telegram_regulatory_2024",
+      "source_document": "BBC 2024; MLex/Guardian on Durov arrest; EU DSA VLOP scrutiny",
+      "source_url": "https://www.mlex.com/mlex/articles/2462368",
+      "rubric_criteria": [
+        {
+          "criterion": "Transparency quality / independent verification",
+          "weight": 0.35,
+          "score": 0.25
+        },
+        {
+          "criterion": "Law-enforcement & regulator cooperation",
+          "weight": 0.3,
+          "score": 0.2
+        },
+        {
+          "criterion": "Documented regulatory pressure (DSA, arrests, takedown resistance)",
+          "weight": 0.35,
+          "score": 0.35
+        }
+      ],
+      "coding_rule": "Low RAS reflects limited verifiable transparency and documented resistance to external moderation demands (Durov arrest Aug 2024; AI Forensics 2026 DSA calls).",
+      "derivation_formula": "0.35\u00d70.25 + 0.30\u00d70.20 + 0.35\u00d70.35",
+      "derivation_steps": "0.0875 + 0.06 + 0.1225 = 0.27 \u2192 0.28"
+    },
+    "Twitter": {
+      "final_value": 0.55,
+      "source_id": "ranking_digital_rights",
+      "rubric_criteria": [
+        {
+          "criterion": "Transparency reporting",
+          "weight": 0.35,
+          "score": 0.6
+        },
+        {
+          "criterion": "LER cooperation",
+          "weight": 0.3,
+          "score": 0.55
+        },
+        {
+          "criterion": "Regulatory pressure post-2022 ownership change",
+          "weight": 0.35,
+          "score": 0.5
+        }
+      ],
+      "derivation_formula": "0.35\u00d70.60 + 0.30\u00d70.55 + 0.35\u00d70.50",
+      "derivation_steps": "0.21 + 0.165 + 0.175 = 0.55"
+    },
+    "Facebook": {
+      "final_value": 0.85,
+      "source_id": "meta_transparency_2023",
+      "source_document": "Meta Transparency Report Q4 2023; Ranking Digital Rights 2023; DSA VLOP status",
+      "source_url": "https://transparency.meta.com/",
+      "rubric_criteria": [
+        {
+          "criterion": "Publishes detailed CSE / transparency reports",
+          "weight": 0.35,
+          "score": 0.9
+        },
+        {
+          "criterion": "Law-enforcement request cooperation",
+          "weight": 0.3,
+          "score": 0.85
+        },
+        {
+          "criterion": "Regulatory standing (DSA VLOP; US state transparency laws)",
+          "weight": 0.35,
+          "score": 0.8
+        }
+      ],
+      "coding_rule": "RAS = weighted sum of rubric criteria (0\u20131 each). Near-YouTube tier.",
+      "derivation_formula": "0.35\u00d70.90 + 0.30\u00d70.85 + 0.35\u00d70.80",
+      "derivation_steps": "0.315 + 0.255 + 0.28 = 0.85",
+      "panel": "secondary_contextual \u2014 transparency-sourced; no live WHSI scrape"
+    },
+    "Gab": {
+      "final_value": 0.15,
+      "source_id": "gab_expert_coded_2023",
+      "source_document": "No public Gab transparency / DSA report; expert-coded ordinal estimate",
+      "source_url": null,
+      "rubric_criteria": [
+        {
+          "criterion": "Publishes verifiable enforcement transparency",
+          "weight": 0.35,
+          "score": 0.1
+        },
+        {
+          "criterion": "Documented LE / regulator cooperation",
+          "weight": 0.3,
+          "score": 0.15
+        },
+        {
+          "criterion": "External regulatory pressure / compliance posture",
+          "weight": 0.35,
+          "score": 0.2
+        }
+      ],
+      "coding_rule": "EXPERT-CODED ESTIMATE (Faculty July Step 6). Gab has no Ranking Digital Rights scorecard entry comparable to Meta/Google and no DSA VLOP transparency pack. RAS=0.15 is an ordinal floor estimate reflecting minimal verifiable accountability. Label as estimate in every table; secondary MRI panel only.",
+      "derivation_formula": "0.35\u00d70.10 + 0.30\u00d70.15 + 0.35\u00d70.20",
+      "derivation_steps": "0.035 + 0.045 + 0.07 = 0.15",
+      "panel": "secondary_expert_estimate"
+    }
+  },
+  "worked_mri_examples": [
+    {
+      "platform": "Twitter",
+      "transparency_source": "Twitter/X Transparency Report 2023",
+      "reactive_removal_rate": 0.72,
+      "reported_consistency": 0.61,
+      "avg_response_hours": 48.0,
+      "PDR": 0.45,
+      "RAS": 0.55,
+      "removal_adj_formula": "0.80 \u00d7 0.72 + 0.20 \u00d7 0.45",
+      "removal_adj": 0.666,
+      "consistency_adj_formula": "0.70 \u00d7 0.61 + 0.30 \u00d7 0.55",
+      "consistency_adj": 0.592,
+      "speed_score": 93.33,
+      "MRI_formula": "0.45 \u00d7 (0.666\u00d7100) + 0.30 \u00d7 93.33 + 0.25 \u00d7 (0.592\u00d7100)",
+      "MRI_score": 72.77,
+      "PDR_derivation": {
+        "final_value": 0.45,
+        "source_id": "twitter_transparency_2023",
+        "source_document": "Twitter/X Transparency Report 2023",
+        "raw_published_figures": [
+          {
+            "metric": "Reactive removal rate (CSV)",
+            "value": "72%",
+            "period": "2023"
+          }
+        ],
+        "coding_rule": "Mid-tier automation vs Telegram; below YouTube. Supplementary panel only.",
+        "derivation_formula": "Expert-coded ordinal anchor",
+        "derivation_steps": "Between Reddit (0.38) and YouTube (0.72) \u2192 0.45"
+      },
+      "RAS_derivation": {
+        "final_value": 0.55,
+        "source_id": "ranking_digital_rights",
+        "rubric_criteria": [
+          {
+            "criterion": "Transparency reporting",
+            "weight": 0.35,
+            "score": 0.6
+          },
+          {
+            "criterion": "LER cooperation",
+            "weight": 0.3,
+            "score": 0.55
+          },
+          {
+            "criterion": "Regulatory pressure post-2022 ownership change",
+            "weight": 0.35,
+            "score": 0.5
+          }
+        ],
+        "derivation_formula": "0.35\u00d70.60 + 0.30\u00d70.55 + 0.35\u00d70.50",
+        "derivation_steps": "0.21 + 0.165 + 0.175 = 0.55"
+      }
+    },
+    {
+      "platform": "Reddit",
+      "transparency_source": "Reddit Transparency Report 2023",
+      "reactive_removal_rate": 0.68,
+      "reported_consistency": 0.55,
+      "avg_response_hours": 72.0,
+      "PDR": 0.38,
+      "RAS": 0.62,
+      "removal_adj_formula": "0.80 \u00d7 0.68 + 0.20 \u00d7 0.38",
+      "removal_adj": 0.62,
+      "consistency_adj_formula": "0.70 \u00d7 0.55 + 0.30 \u00d7 0.62",
+      "consistency_adj": 0.571,
+      "speed_score": 90.0,
+      "MRI_formula": "0.45 \u00d7 (0.62\u00d7100) + 0.30 \u00d7 90.0 + 0.25 \u00d7 (0.571\u00d7100)",
+      "MRI_score": 69.18,
+      "PDR_derivation": {
+        "final_value": 0.38,
+        "source_id": "reddit_transparency_2023",
+        "source_document": "Reddit Transparency Report 2023; AutoModerator documentation",
+        "source_url": "https://www.redditinc.com/policies/transparency-report-2023",
+        "raw_published_figures": [
+          {
+            "metric": "Reactive removal rate (transparency CSV input)",
+            "value": "68%",
+            "period": "2023",
+            "citation": "data/transparency/moderation_reports.csv \u2190 Reddit Transparency Report 2023"
+          },
+          {
+            "metric": "AutoModerator / automated tooling prevalence",
+            "value": "documented platform-wide, no single published PDR %",
+            "period": "2023",
+            "citation": "Reddit transparency + moderation SoK (2023) \u2014 partial proactive tooling"
+          }
+        ],
+        "coding_rule": "Reddit publishes enforcement volumes but not a clean 'removed before report' % for harassment. Code PDR=0.38 as medium: below YouTube (heavy automation), above Telegram (minimal GBV proactive scan in private groups). Anchored below Meta/Google tier (~0.68\u20130.72) and above Telegram floor.",
+        "derivation_formula": "Expert-coded ordinal anchor on published automation evidence",
+        "derivation_steps": "Ordinal scale {Telegram:0.03, Reddit:0.38, YouTube:0.72} \u2014 documented in rubric"
+      },
+      "RAS_derivation": {
+        "final_value": 0.62,
+        "source_id": "ranking_digital_rights",
+        "source_document": "Ranking Digital Rights 2023; Reddit Transparency Report 2023",
+        "rubric_criteria": [
+          {
+            "criterion": "Transparency reporting (partial vs Google/Meta)",
+            "weight": 0.35,
+            "score": 0.7
+          },
+          {
+            "criterion": "Law-enforcement / legal request cooperation",
+            "weight": 0.3,
+            "score": 0.65
+          },
+          {
+            "criterion": "Regulatory standing (DSA, moderate scrutiny)",
+            "weight": 0.35,
+            "score": 0.55
+          }
+        ],
+        "coding_rule": "RAS = weighted rubric; mid-tier accountability.",
+        "derivation_formula": "0.35\u00d70.70 + 0.30\u00d70.65 + 0.35\u00d70.55",
+        "derivation_steps": "0.245 + 0.195 + 0.1925 = 0.6325 \u2192 0.62"
+      }
+    },
+    {
+      "platform": "YouTube",
+      "transparency_source": "Google Transparency Report 2023",
+      "reactive_removal_rate": 0.8,
+      "reported_consistency": 0.68,
+      "avg_response_hours": 36.0,
+      "PDR": 0.72,
+      "RAS": 0.88,
+      "removal_adj_formula": "0.80 \u00d7 0.8 + 0.20 \u00d7 0.72",
+      "removal_adj": 0.784,
+      "consistency_adj_formula": "0.70 \u00d7 0.68 + 0.30 \u00d7 0.88",
+      "consistency_adj": 0.74,
+      "speed_score": 95.0,
+      "MRI_formula": "0.45 \u00d7 (0.784\u00d7100) + 0.30 \u00d7 95.0 + 0.25 \u00d7 (0.74\u00d7100)",
+      "MRI_score": 82.28,
+      "PDR_derivation": {
+        "final_value": 0.72,
+        "source_id": "google_transparency_2023",
+        "source_document": "Google/YouTube Transparency Report 2023; CA AB 587 Q4 2023 report",
+        "source_url": "https://transparencyreport.google.com/youtube-policy/removals",
+        "raw_published_figures": [
+          {
+            "metric": "Comment removals first-detected by automated flagging",
+            "value": "99.5%",
+            "period": "Jul\u2013Sep 2023",
+            "citation": "Google Transparency Report Help Center, comment enforcement tables"
+          },
+          {
+            "metric": "Video removals first-detected by automated flagging",
+            "value": "96.1%",
+            "period": "Q4 2023",
+            "citation": "YouTube CA AB 587 Transparency Report (CA OAG filing), Q4 2023"
+          }
+        ],
+        "coding_rule": "PDR cannot be taken as 99.5% because comment removals are spam-dominated (~85%) and automated-first-detection \u2260 gendered-harm-specific proactive removal. Apply harm-relevance discount d=0.75 to video automated-first-detection anchor: PDR = 0.961 \u00d7 0.75 = 0.721 \u2192 0.72.",
+        "derivation_formula": "PDR = automated_first_detection_video \u00d7 harm_relevance_discount",
+        "derivation_steps": "0.961 \u00d7 0.75 = 0.72075 \u2192 round to 0.72"
+      },
+      "RAS_derivation": {
+        "final_value": 0.88,
+        "source_id": "ranking_digital_rights",
+        "source_document": "Ranking Digital Rights 2023; Google DSA/VLOP disclosures; Google LER",
+        "source_url": "https://rankingdigitalrights.org/",
+        "rubric_criteria": [
+          {
+            "criterion": "Publishes detailed transparency / DSA compliance",
+            "weight": 0.35,
+            "score": 0.95
+          },
+          {
+            "criterion": "Law-enforcement request cooperation (LER)",
+            "weight": 0.3,
+            "score": 0.9
+          },
+          {
+            "criterion": "Low recent regulatory enforcement pressure (2023)",
+            "weight": 0.35,
+            "score": 0.8
+          }
+        ],
+        "coding_rule": "RAS = weighted sum of rubric criteria (0\u20131 each).",
+        "derivation_formula": "0.35\u00d70.95 + 0.30\u00d70.90 + 0.35\u00d70.80",
+        "derivation_steps": "0.3325 + 0.27 + 0.28 = 0.8825 \u2192 0.88"
+      }
+    },
+    {
+      "platform": "Telegram",
+      "transparency_source": "Estimated \u2014 limited public moderation reporting; cite as estimate",
+      "reactive_removal_rate": 0.15,
+      "reported_consistency": 0.2,
+      "avg_response_hours": 720.0,
+      "PDR": 0.03,
+      "RAS": 0.28,
+      "removal_adj_formula": "0.80 \u00d7 0.15 + 0.20 \u00d7 0.03",
+      "removal_adj": 0.126,
+      "consistency_adj_formula": "0.70 \u00d7 0.2 + 0.30 \u00d7 0.28",
+      "consistency_adj": 0.224,
+      "speed_score": 0.0,
+      "MRI_formula": "0.45 \u00d7 (0.126\u00d7100) + 0.30 \u00d7 0.0 + 0.25 \u00d7 (0.224\u00d7100)",
+      "MRI_score": 11.27,
+      "PDR_derivation": {
+        "final_value": 0.03,
+        "source_id": "telegram_transparency_gap_2024",
+        "source_document": "BBC 2024; NBC 2024; Stanford Internet Observatory (cited in NBC)",
+        "source_url": "https://www.bbc.com/news/articles/cy54905nv0go",
+        "raw_published_figures": [
+          {
+            "metric": "Membership in NCMEC/IWF hash-sharing programmes",
+            "value": "Not a member (BBC 2024)",
+            "period": "2024",
+            "citation": "BBC \u2014 Telegram refused to join NCMEC/IWF child-protection schemes"
+          },
+          {
+            "metric": "Proactive GBV scan in private groups",
+            "value": "Not documented; private chats excluded from public moderation claims",
+            "period": "2024",
+            "citation": "NBC/Stanford \u2014 CSAM rules focus on public channels; private GBV ecosystem opaque"
+          },
+          {
+            "metric": "Telegram DSA report AI/algorithmic detection (public content)",
+            "value": "Millions of removals, but not convertible to GBV PDR",
+            "period": "2025",
+            "citation": "Telegram EU DSA Transparency Report 2025 \u2014 aggregate enforcement only"
+          }
+        ],
+        "coding_rule": "For gendered-harm / IBSA in private/semi-private ecosystems (AI Forensics 2026), proactive detection is negligible. Code PDR=0.03 as floor estimate (2\u20135% range) reflecting public-channel hash/AI tooling only, not abuse-network visibility.",
+        "derivation_formula": "Expert-coded floor within literature range 0.02\u20130.05",
+        "derivation_steps": "Lower bound of documented range \u2192 0.03"
+      },
+      "RAS_derivation": {
+        "final_value": 0.28,
+        "source_id": "telegram_regulatory_2024",
+        "source_document": "BBC 2024; MLex/Guardian on Durov arrest; EU DSA VLOP scrutiny",
+        "source_url": "https://www.mlex.com/mlex/articles/2462368",
+        "rubric_criteria": [
+          {
+            "criterion": "Transparency quality / independent verification",
+            "weight": 0.35,
+            "score": 0.25
+          },
+          {
+            "criterion": "Law-enforcement & regulator cooperation",
+            "weight": 0.3,
+            "score": 0.2
+          },
+          {
+            "criterion": "Documented regulatory pressure (DSA, arrests, takedown resistance)",
+            "weight": 0.35,
+            "score": 0.35
+          }
+        ],
+        "coding_rule": "Low RAS reflects limited verifiable transparency and documented resistance to external moderation demands (Durov arrest Aug 2024; AI Forensics 2026 DSA calls).",
+        "derivation_formula": "0.35\u00d70.25 + 0.30\u00d70.20 + 0.35\u00d70.35",
+        "derivation_steps": "0.0875 + 0.06 + 0.1225 = 0.27 \u2192 0.28"
+      }
+    },
+    {
+      "platform": "Facebook",
+      "transparency_source": "Meta Transparency Report Q4 2023 (PDR/RAS expert-coded; see mri_input_derivations)",
+      "reactive_removal_rate": 0.85,
+      "reported_consistency": 0.7,
+      "avg_response_hours": 24.0,
+      "PDR": 0.68,
+      "RAS": 0.85,
+      "removal_adj_formula": "0.80 \u00d7 0.85 + 0.20 \u00d7 0.68",
+      "removal_adj": 0.816,
+      "consistency_adj_formula": "0.70 \u00d7 0.7 + 0.30 \u00d7 0.85",
+      "consistency_adj": 0.745,
+      "speed_score": 96.67,
+      "MRI_formula": "0.45 \u00d7 (0.816\u00d7100) + 0.30 \u00d7 96.67 + 0.25 \u00d7 (0.745\u00d7100)",
+      "MRI_score": 84.34,
+      "PDR_derivation": {
+        "final_value": 0.68,
+        "source_id": "meta_transparency_2023",
+        "source_document": "Meta Community Standards Enforcement Report Q4 2023; Ranking Digital Rights 2023",
+        "source_url": "https://transparency.meta.com/",
+        "raw_published_figures": [
+          {
+            "metric": "Proactive detection rate (Meta CSE \u2014 content actioned before user report)",
+            "value": "~90%+ for several policy areas (aggregate; spam/fraud heavy)",
+            "period": "Q4 2023",
+            "citation": "Meta Transparency Center \u2014 proactive vs reactive share tables"
+          },
+          {
+            "metric": "Reactive removal input used in MRI CSV",
+            "value": "85%",
+            "period": "2023",
+            "citation": "data/transparency/moderation_reports.csv \u2190 Meta Transparency Q4 2023"
+          }
+        ],
+        "coding_rule": "Meta publishes high proactive % across policy areas, but harassment/bullying and gender-based harm are lower-automation than spam. Apply harm-relevance discount similar to YouTube: start from ~0.90 proactive share \u00d7 0.75 relevance \u2192 ~0.68. Place Facebook between Reddit (0.38) and YouTube (0.72).",
+        "derivation_formula": "PDR \u2248 published_proactive_share \u00d7 harm_relevance_discount",
+        "derivation_steps": "0.90 \u00d7 0.75 = 0.675 \u2192 round to 0.68",
+        "panel": "secondary_contextual \u2014 no live WHSI scrape for Facebook in this thesis"
+      },
+      "RAS_derivation": {
+        "final_value": 0.85,
+        "source_id": "meta_transparency_2023",
+        "source_document": "Meta Transparency Report Q4 2023; Ranking Digital Rights 2023; DSA VLOP status",
+        "source_url": "https://transparency.meta.com/",
+        "rubric_criteria": [
+          {
+            "criterion": "Publishes detailed CSE / transparency reports",
+            "weight": 0.35,
+            "score": 0.9
+          },
+          {
+            "criterion": "Law-enforcement request cooperation",
+            "weight": 0.3,
+            "score": 0.85
+          },
+          {
+            "criterion": "Regulatory standing (DSA VLOP; US state transparency laws)",
+            "weight": 0.35,
+            "score": 0.8
+          }
+        ],
+        "coding_rule": "RAS = weighted sum of rubric criteria (0\u20131 each). Near-YouTube tier.",
+        "derivation_formula": "0.35\u00d70.90 + 0.30\u00d70.85 + 0.35\u00d70.80",
+        "derivation_steps": "0.315 + 0.255 + 0.28 = 0.85",
+        "panel": "secondary_contextual \u2014 transparency-sourced; no live WHSI scrape"
+      }
+    },
+    {
+      "platform": "Gab",
+      "transparency_source": "Expert-coded estimate \u2014 no public transparency report (secondary MRI panel only)",
+      "reactive_removal_rate": 0.21,
+      "reported_consistency": 0.3,
+      "avg_response_hours": 240.0,
+      "PDR": 0.05,
+      "RAS": 0.15,
+      "removal_adj_formula": "0.80 \u00d7 0.21 + 0.20 \u00d7 0.05",
+      "removal_adj": 0.178,
+      "consistency_adj_formula": "0.70 \u00d7 0.3 + 0.30 \u00d7 0.15",
+      "consistency_adj": 0.255,
+      "speed_score": 66.67,
+      "MRI_formula": "0.45 \u00d7 (0.178\u00d7100) + 0.30 \u00d7 66.67 + 0.25 \u00d7 (0.255\u00d7100)",
+      "MRI_score": 34.38,
+      "PDR_derivation": {
+        "final_value": 0.05,
+        "source_id": "gab_expert_coded_2023",
+        "source_document": "No public Gab transparency report; expert-coded ordinal estimate",
+        "source_url": null,
+        "raw_published_figures": [
+          {
+            "metric": "Published GBV / harassment proactive-detection %",
+            "value": "Not available",
+            "period": "2023",
+            "citation": "Gab does not publish Meta/Google-style enforcement transparency"
+          }
+        ],
+        "coding_rule": "EXPERT-CODED ESTIMATE (Faculty July Step 6). Gab markets itself as a minimal-moderation free-speech platform; no verifiable proactive GBV detection figures exist. Code PDR=0.05 as near-floor (above Telegram 0.03 only for residual public-post tooling), explicitly labelled estimate \u2014 NOT a measured rate. Secondary MRI panel only; excluded from primary YouTube/Reddit/Telegram results claims.",
+        "derivation_formula": "Expert-coded floor on ordinal scale {Telegram:0.03, Gab:0.05, Reddit:0.38, \u2026}",
+        "derivation_steps": "No published figure \u2192 ordinal floor 0.05 with explicit estimate label",
+        "panel": "secondary_expert_estimate"
+      },
+      "RAS_derivation": {
+        "final_value": 0.15,
+        "source_id": "gab_expert_coded_2023",
+        "source_document": "No public Gab transparency / DSA report; expert-coded ordinal estimate",
+        "source_url": null,
+        "rubric_criteria": [
+          {
+            "criterion": "Publishes verifiable enforcement transparency",
+            "weight": 0.35,
+            "score": 0.1
+          },
+          {
+            "criterion": "Documented LE / regulator cooperation",
+            "weight": 0.3,
+            "score": 0.15
+          },
+          {
+            "criterion": "External regulatory pressure / compliance posture",
+            "weight": 0.35,
+            "score": 0.2
+          }
+        ],
+        "coding_rule": "EXPERT-CODED ESTIMATE (Faculty July Step 6). Gab has no Ranking Digital Rights scorecard entry comparable to Meta/Google and no DSA VLOP transparency pack. RAS=0.15 is an ordinal floor estimate reflecting minimal verifiable accountability. Label as estimate in every table; secondary MRI panel only.",
+        "derivation_formula": "0.35\u00d70.10 + 0.30\u00d70.15 + 0.35\u00d70.20",
+        "derivation_steps": "0.035 + 0.045 + 0.07 = 0.15",
+        "panel": "secondary_expert_estimate"
+      }
+    }
+  ],
+  "transparency_csv": "data/transparency/moderation_reports.csv",
+  "references": [
+    {
+      "id": "ai_forensics_2026",
+      "title": "Telegram enables widespread gender-based ecosystem of abuse",
+      "use": "VIS/MBR Telegram, supplementary perpetrator rate estimate",
+      "url": "https://aiforensics.org/"
+    },
+    {
+      "id": "chandrasekharan_2017",
+      "title": "The Bag of Communities \u2014 Reddit ban effectiveness",
+      "use": "MBR Reddit medium estimate"
+    },
+    {
+      "id": "google_transparency_2023",
+      "title": "Google / YouTube Transparency Report 2023",
+      "use": "PDR YouTube proactive removal share"
+    },
+    {
+      "id": "ranking_digital_rights",
+      "title": "Ranking Digital Rights Big Tech Scorecard",
+      "use": "RAS regulatory cooperation framing",
+      "url": "https://rankingdigitalrights.org/"
+    }
+  ]
+}

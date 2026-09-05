@@ -1,0 +1,5 @@
+platform,TP_w,FP_w,TN_w,FN_w,Se_w,Sp_w,FPR_w,obs_flag_rate,obs_minus_FPR_pp,RG_status,RG_corrected
+YouTube,495.71,3155.71,7989.57,0.0,1.0,0.7169,0.2831,0.3077,2.46,corrected,0.0343
+Reddit,229.1,1154.79,3087.12,0.0,1.0,0.7278,0.2722,0.2894,1.72,corrected,0.0236
+Telegram,7.0,83.42,1556.67,314.92,0.0217,0.9491,0.0509,0.0639,1.3,undefined_youden_Se_plus_Sp_le_1,
+Twitter,1465.17,857.17,67.67,26.0,0.9826,0.0732,0.9268,0.9433,1.65,n/a_historical,

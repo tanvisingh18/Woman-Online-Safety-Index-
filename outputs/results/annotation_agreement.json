@@ -1,0 +1,8 @@
+{
+  "n_dual_annotated": 360,
+  "cohen_kappa_perpetrator": 1.0,
+  "kappa_acceptable": true,
+  "n_disputed_rows": 0,
+  "disputed_row_indices": [],
+  "action_if_kappa_low": "Revise codebook (docs/ANNOTATION_CODEBOOK.md), discuss disagreements, re-annotate disputed rows"
+}

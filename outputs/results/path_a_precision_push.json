@@ -1,0 +1,150 @@
+{
+  "created_at": "2026-08-12T16:13:51.357329+00:00",
+  "goal": "IPW precision 0.5-0.7",
+  "candidates": {
+    "distilbert_calibrated": {
+      "thr": 0.39,
+      "june": {
+        "precision": 0.9758,
+        "recall": 0.8944,
+        "specificity": 0.9778,
+        "f1": 0.9333,
+        "TP": 161,
+        "FP": 4,
+        "FN": 19,
+        "TN": 176,
+        "n_flags": 165,
+        "thr": 0.39,
+        "selection_score": 1010.2274
+      },
+      "unweighted_v2": {
+        "precision": 0.303,
+        "recall": 0.8824,
+        "specificity": 0.5843,
+        "f1": 0.4511,
+        "TP": 30,
+        "FP": 69,
+        "FN": 4,
+        "TN": 97,
+        "n_flags": 99
+      },
+      "weighted_v2": {
+        "TP_w": 2458.2024,
+        "FP_w": 5570.6905,
+        "FN_w": 79.6905,
+        "TN_w": 12381.4167,
+        "sensitivity": 0.9686,
+        "specificity": 0.6897,
+        "precision": 0.3062,
+        "recall": 0.9686,
+        "f1": 0.4653,
+        "weighted_flag_rate": 0.3918,
+        "sum_weights": 20490.0,
+        "n_rows": 200
+      }
+    },
+    "tfidf_aggressive": {
+      "config": {
+        "t_sex": 0.55,
+        "t_sex_threat": 0.4,
+        "t_threat": 0.28,
+        "topic_veto": true,
+        "require_female_target": false,
+        "expand_victim": true
+      },
+      "june_P": 0.935,
+      "june_R": 0.6389,
+      "weighted_v2": {
+        "TP_w": 1842.8333,
+        "FP_w": 2740.631,
+        "FN_w": 695.0595,
+        "TN_w": 15211.4762,
+        "sensitivity": 0.7261,
+        "specificity": 0.8473,
+        "precision": 0.4021,
+        "recall": 0.7261,
+        "f1": 0.5176,
+        "weighted_flag_rate": 0.2237,
+        "sum_weights": 20490.0,
+        "n_rows": 200
+      },
+      "unweighted_v2": {
+        "precision": 0.3014,
+        "recall": 0.6471,
+        "specificity": 0.6928,
+        "f1": 0.4112,
+        "TP": 22,
+        "FP": 51,
+        "FN": 12,
+        "TN": 115,
+        "n_flags": 73
+      }
+    },
+    "hybrid_db_topic_veto": {
+      "thr": 0.39,
+      "june": {
+        "precision": 0.9753,
+        "recall": 0.8778,
+        "specificity": 0.9778,
+        "f1": 0.924,
+        "TP": 158,
+        "FP": 4,
+        "FN": 22,
+        "TN": 176,
+        "n_flags": 162,
+        "thr": 0.39,
+        "selection_score": 1009.24
+      },
+      "weighted_v2": {
+        "TP_w": 2395.3452,
+        "FP_w": 5031.9881,
+        "FN_w": 142.5476,
+        "TN_w": 12920.1191,
+        "sensitivity": 0.9438,
+        "specificity": 0.7197,
+        "precision": 0.3225,
+        "recall": 0.9438,
+        "f1": 0.4807,
+        "weighted_flag_rate": 0.3625,
+        "sum_weights": 20490.0,
+        "n_rows": 200
+      },
+      "unweighted_v2": {
+        "precision": 0.3118,
+        "recall": 0.8529,
+        "specificity": 0.6145,
+        "f1": 0.4567,
+        "TP": 29,
+        "FP": 64,
+        "FN": 5,
+        "TN": 102,
+        "n_flags": 93
+      }
+    }
+  },
+  "primary": {
+    "name": "tfidf_aggressive",
+    "weighted": {
+      "TP_w": 1842.8333,
+      "FP_w": 2740.631,
+      "FN_w": 695.0595,
+      "TN_w": 15211.4762,
+      "sensitivity": 0.7261,
+      "specificity": 0.8473,
+      "precision": 0.4021,
+      "recall": 0.7261,
+      "f1": 0.5176,
+      "weighted_flag_rate": 0.2237,
+      "sum_weights": 20490.0,
+      "n_rows": 200
+    }
+  },
+  "gate": {
+    "target": [
+      0.5,
+      0.7
+    ],
+    "achieved": 0.4021,
+    "met": false
+  }
+}

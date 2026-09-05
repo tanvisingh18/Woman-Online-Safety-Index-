@@ -1,0 +1,4 @@
+platform,n_comments,perpetrator_harm_rate,perpetrator_ci_low,perpetrator_ci_high,women_targeted_perpetrator_rate,women_targeted_ci_low,women_targeted_ci_high,gendered_harm_rate,gendered_ci_low,gendered_ci_high,is_proxy_data,is_historical_data,is_historical,is_proxy,platform_display
+YouTube,12661,0.3077,0.3001,0.3155,0.2187,0.2117,0.2257,0.284,0.2762,0.2917,0,0,0,0,YouTube
+Reddit,4727,0.2894,0.2765,0.3025,0.2001,0.1887,0.2116,0.2668,0.2541,0.2788,0,0,0,0,Reddit
+Telegram,2377,0.0639,0.0543,0.074,0.037,0.0294,0.0446,0.0551,0.0459,0.0644,0,0,0,0,Telegram

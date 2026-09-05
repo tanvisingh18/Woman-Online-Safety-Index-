@@ -1,0 +1,6 @@
+community,platform,WHSI,category,toxicity,threat,frequency,normalization,n_comments,harm_rate,gendered_harm_rate,hotspot_platform
+Breaking Down Patriarchy,YouTube,52.25,Unsafe,53.99,17.11,70.43,72.46,127,0.874,1.0,YouTube
+Turning Point USA,YouTube,51.56,Unsafe,51.55,17.96,71.05,77.37,120,0.9333,1.0,YouTube
+Catfished,YouTube,51.26,Unsafe,49.28,16.8,70.17,76.48,214,0.8925,1.0,YouTube
+Samantha Bee,YouTube,40.0,Moderately Unsafe,51.38,16.6,70.44,44.02,102,0.8824,1.0,YouTube
+unknown,YouTube,40.0,Moderately Unsafe,54.67,18.28,70.0,17.5,1220,0.9238,1.0,YouTube

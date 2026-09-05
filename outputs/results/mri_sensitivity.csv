@@ -1,0 +1,55 @@
+platform,analysis,w_removal,w_speed,w_consistency,MRI_score,MRI_actual_file,MRI_label,max_hours,speed_score
+Twitter,weight_sensitivity_pdr_ras,0.45,0.3,0.25,72.77,72.77,Moderately Accountable,,
+Reddit,weight_sensitivity_pdr_ras,0.45,0.3,0.25,69.18,60.64,Moderately Accountable,,
+YouTube,weight_sensitivity_pdr_ras,0.45,0.3,0.25,82.28,82.28,Highly Accountable,,
+Telegram,weight_sensitivity_pdr_ras,0.45,0.3,0.25,11.27,11.27,Unaccountable,,
+Facebook,weight_sensitivity_pdr_ras,0.45,0.3,0.25,84.34,84.34,Highly Accountable,,
+Gab,weight_sensitivity_pdr_ras,0.45,0.3,0.25,34.38,34.38,Poorly Accountable,,
+Twitter,weight_sensitivity_pdr_ras,0.5,0.25,0.25,71.43,72.77,Moderately Accountable,,
+Reddit,weight_sensitivity_pdr_ras,0.5,0.25,0.25,67.78,60.64,Moderately Accountable,,
+YouTube,weight_sensitivity_pdr_ras,0.5,0.25,0.25,81.45,82.28,Highly Accountable,,
+Telegram,weight_sensitivity_pdr_ras,0.5,0.25,0.25,11.9,11.27,Unaccountable,,
+Facebook,weight_sensitivity_pdr_ras,0.5,0.25,0.25,83.59,84.34,Highly Accountable,,
+Gab,weight_sensitivity_pdr_ras,0.5,0.25,0.25,31.94,34.38,Poorly Accountable,,
+Twitter,weight_sensitivity_pdr_ras,0.4,0.35,0.25,74.11,72.77,Moderately Accountable,,
+Reddit,weight_sensitivity_pdr_ras,0.4,0.35,0.25,70.57,60.64,Moderately Accountable,,
+YouTube,weight_sensitivity_pdr_ras,0.4,0.35,0.25,83.11,82.28,Highly Accountable,,
+Telegram,weight_sensitivity_pdr_ras,0.4,0.35,0.25,10.64,11.27,Unaccountable,,
+Facebook,weight_sensitivity_pdr_ras,0.4,0.35,0.25,85.1,84.34,Highly Accountable,,
+Gab,weight_sensitivity_pdr_ras,0.4,0.35,0.25,36.83,34.38,Poorly Accountable,,
+Twitter,weight_sensitivity_pdr_ras,0.45,0.3,0.35,78.69,72.77,Highly Accountable,,
+Reddit,weight_sensitivity_pdr_ras,0.45,0.3,0.35,74.89,60.64,Moderately Accountable,,
+YouTube,weight_sensitivity_pdr_ras,0.45,0.3,0.35,89.68,82.28,Highly Accountable,,
+Telegram,weight_sensitivity_pdr_ras,0.45,0.3,0.35,13.51,11.27,Unaccountable,,
+Facebook,weight_sensitivity_pdr_ras,0.45,0.3,0.35,91.8,84.34,Highly Accountable,,
+Gab,weight_sensitivity_pdr_ras,0.45,0.3,0.35,36.93,34.38,Poorly Accountable,,
+Twitter,weight_sensitivity_pdr_ras,0.33,0.33,0.34,72.91,72.77,Moderately Accountable,,
+Reddit,weight_sensitivity_pdr_ras,0.33,0.33,0.34,69.57,60.64,Moderately Accountable,,
+YouTube,weight_sensitivity_pdr_ras,0.33,0.33,0.34,82.38,82.28,Highly Accountable,,
+Telegram,weight_sensitivity_pdr_ras,0.33,0.33,0.34,11.77,11.27,Unaccountable,,
+Facebook,weight_sensitivity_pdr_ras,0.33,0.33,0.34,84.16,84.34,Highly Accountable,,
+Gab,weight_sensitivity_pdr_ras,0.33,0.33,0.34,36.54,34.38,Poorly Accountable,,
+Twitter,horizon_sensitivity_pdr_ras,,,,66.2,,,168.0,71.43
+Reddit,horizon_sensitivity_pdr_ras,,,,59.32,,,168.0,57.14
+YouTube,horizon_sensitivity_pdr_ras,,,,77.35,,,168.0,78.57
+Telegram,horizon_sensitivity_pdr_ras,,,,11.27,,,168.0,0.0
+Facebook,horizon_sensitivity_pdr_ras,,,,81.06,,,168.0,85.71
+Gab,horizon_sensitivity_pdr_ras,,,,14.38,,,168.0,0.0
+Twitter,horizon_sensitivity_pdr_ras,,,,70.48,,,336.0,85.71
+Reddit,horizon_sensitivity_pdr_ras,,,,65.75,,,336.0,78.57
+YouTube,horizon_sensitivity_pdr_ras,,,,80.57,,,336.0,89.29
+Telegram,horizon_sensitivity_pdr_ras,,,,11.27,,,336.0,0.0
+Facebook,horizon_sensitivity_pdr_ras,,,,83.2,,,336.0,92.86
+Gab,horizon_sensitivity_pdr_ras,,,,22.96,,,336.0,28.57
+Twitter,horizon_sensitivity_pdr_ras,,,,72.77,,,720.0,93.33
+Reddit,horizon_sensitivity_pdr_ras,,,,69.18,,,720.0,90.0
+YouTube,horizon_sensitivity_pdr_ras,,,,82.28,,,720.0,95.0
+Telegram,horizon_sensitivity_pdr_ras,,,,11.27,,,720.0,0.0
+Facebook,horizon_sensitivity_pdr_ras,,,,84.34,,,720.0,96.67
+Gab,horizon_sensitivity_pdr_ras,,,,34.38,,,720.0,66.67
+Twitter,horizon_sensitivity_pdr_ras,,,,73.77,,,1440.0,96.67
+Reddit,horizon_sensitivity_pdr_ras,,,,70.68,,,1440.0,95.0
+YouTube,horizon_sensitivity_pdr_ras,,,,83.03,,,1440.0,97.5
+Telegram,horizon_sensitivity_pdr_ras,,,,26.27,,,1440.0,50.0
+Facebook,horizon_sensitivity_pdr_ras,,,,84.84,,,1440.0,98.33
+Gab,horizon_sensitivity_pdr_ras,,,,39.39,,,1440.0,83.33

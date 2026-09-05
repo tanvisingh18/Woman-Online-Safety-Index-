@@ -1,0 +1,146 @@
+{
+  "updated_at": "2026-07-10T17:39:27.475955+00:00",
+  "faculty_improvement_checklist": {
+    "step_1_human_annotation": {
+      "done": true,
+      "annotation": {
+        "status": "dual_complete",
+        "total_rows": 360,
+        "annotator_a_filled": 360,
+        "annotator_b_filled": 360,
+        "human_label_filled": 360,
+        "file": "data/labelled/validation_sample.csv",
+        "next_command": "PYTHONPATH=src python src/validate_classifier.py --adjudicate && PYTHONPATH=src python src/validate_classifier.py --import-annotations data/labelled/validation_sample.csv && PYTHONPATH=src python src/run_thesis_improvements.py"
+      }
+    },
+    "step_2_prevalence_correction": {
+      "done": true,
+      "interim_until_step_1": false
+    },
+    "step_3_detoxify_analysis": true,
+    "step_4_davidson_quarantined": true,
+    "step_5_assumption_A1_no_whsi_corrected": true,
+    "step_6_empirical_mri_wave2": {
+      "done": true,
+      "protocol": "docs/EMPIRICAL_MRI_WAVE2_PROTOCOL.md",
+      "earliest_at": "2026-06-25T07:01:32.055947+00:00",
+      "command": "PYTHONPATH=src python src/schedule_empirical_mri.py --run-wave2"
+    },
+    "step_7_monte_carlo": true,
+    "step_8_threshold_justification": true,
+    "step_9_mri_band_audit": true,
+    "step_10_glossary": true,
+    "step_11_viva_prep": true
+  },
+  "pending_required": [],
+  "optional_accuracy_improvements": [
+    "telegram_public_channel_scrape"
+  ],
+  "annotation": {
+    "status": "dual_complete",
+    "total_rows": 360,
+    "annotator_a_filled": 360,
+    "annotator_b_filled": 360,
+    "human_label_filled": 360,
+    "file": "data/labelled/validation_sample.csv",
+    "next_command": "PYTHONPATH=src python src/validate_classifier.py --adjudicate && PYTHONPATH=src python src/validate_classifier.py --import-annotations data/labelled/validation_sample.csv && PYTHONPATH=src python src/run_thesis_improvements.py"
+  },
+  "current_whsi_raw": {
+    "YouTube": 28.41,
+    "Reddit": 24.95,
+    "Telegram": 12.69
+  },
+  "current_whsi_literature_adjusted": {
+    "YouTube": 33.65,
+    "Reddit": 32.29,
+    "Telegram": 53.88
+  },
+  "current_mri": {
+    "Facebook": 84.34,
+    "YouTube": 82.28,
+    "Twitter": 72.77,
+    "Reddit": 69.18,
+    "Gab": 34.38,
+    "Telegram": 11.27
+  },
+  "corpus_validation_note": "F1 0.9319 is IN-SAMPLE on June 360 tuning set; primary = Protocol v2 held-out (pending)",
+  "corpus_validation": {
+    "source": "corpus_human_validation",
+    "n_annotated": 360,
+    "precision": 0.8812,
+    "recall": 0.9889,
+    "sensitivity": 0.9889,
+    "specificity": 0.8667,
+    "f1": 0.9319,
+    "confusion_matrix": [
+      [
+        156,
+        24
+      ],
+      [
+        2,
+        178
+      ]
+    ],
+    "by_platform": {
+      "Reddit": {
+        "n": 120,
+        "precision": 0.8824,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.8667,
+        "f1": 0.9375
+      },
+      "Telegram": {
+        "n": 80,
+        "precision": 0.8837,
+        "recall": 0.95,
+        "sensitivity": 0.95,
+        "specificity": 0.875,
+        "f1": 0.9157
+      },
+      "Twitter": {
+        "n": 40,
+        "precision": 0.9091,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.9,
+        "f1": 0.9524
+      },
+      "YouTube": {
+        "n": 120,
+        "precision": 0.8696,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.85,
+        "f1": 0.9302
+      }
+    },
+    "note": "Gold labels from dual-annotator adjudication on project corpus"
+  },
+  "as_of": "2026-07-12",
+  "faculty_july_round2": {
+    "reddit_MRI": 69.18,
+    "mri_policy": "unblended_proactive_probe",
+    "hotspot_min_n": 100,
+    "f1_093": "in_sample_only",
+    "held_out": "pending_protocol_v2_annotation",
+    "protocol_v2_sample": "data/labelled/v2/",
+    "artifacts_done": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "step1_blocker": "human_annotation_of_v2_blanks"
+  },
+  "MRI": {
+    "Reddit": 69.18
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "policy": "unblended",
+  "rationale": "Wave-2 0% removal measures unreported/proactive survival, not reactive removal-after-report. Blending it into MRI's removal term is a category error. MRI_score in mri_scores.csv is transparency+PDR/RAS only. The 0% probe is reported beside coded PDR as a standalone empirical check.",
+  "reddit_MRI_transparency_only": 69.18,
+  "proactive_probe": {
+    "platform": "Reddit",
+    "empirical_removal_rate": 0.0,
+    "n_harmful_wave1": 494,
+    "n_removed_in_window": 0,
+    "interpretation": "Reported proactive detection is not observable in our harassment sample (coded PDR for Reddit = 38%; empirical unreported removal = 0.0%).",
+    "former_blended_MRI": 60.64,
+    "MRI_now_in_matrix": 69.18
+  }
+}
