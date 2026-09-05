@@ -1,0 +1,23 @@
+{
+  "seed": 20260804,
+  "n_per_channel": 30,
+  "channels": {
+    "Breaking Down Patriarchy": {
+      "n_flagged_available": 127,
+      "n_sampled": 30
+    },
+    "Turning Point USA": {
+      "n_flagged_available": 120,
+      "n_sampled": 30
+    },
+    "Catfished": {
+      "n_flagged_available": 214,
+      "n_sampled": 30
+    },
+    "Samantha Bee": {
+      "n_flagged_available": 102,
+      "n_sampled": 30
+    }
+  },
+  "created_at": "2026-08-04T08:59:34.681910+00:00"
+}

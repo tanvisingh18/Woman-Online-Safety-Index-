@@ -1,0 +1,67 @@
+{
+  "seed": 20260804,
+  "completed_at": "2026-08-12T13:29:14.884458+00:00",
+  "annotator_b": {
+    "method": "independent Protocol v2 codebook pass on 10/30 per channel",
+    "blind_to": "annotator_a_notes at decision time (labels from text only)",
+    "n_spotcheck": 40,
+    "n_agree": 39,
+    "n_disagree": 1,
+    "agree_rate": 0.975,
+    "disagreements": [
+      {
+        "audit_id": "CAT_28",
+        "A": 0,
+        "B": 1,
+        "final": 1
+      }
+    ]
+  },
+  "note": "All four channels remain below ~50% genuine perpetrator fraction after independent B spot-check; REMOVE from hotspot tables and document as classifier false-positive mode.",
+  "channels": [
+    {
+      "channel": "Breaking Down Patriarchy",
+      "n_audited_flagged": 30,
+      "genuine_perpetrator_count": 1,
+      "genuine_fraction": 0.0333,
+      "wilson_low": 0.0059,
+      "wilson_high": 0.1667,
+      "spotcheck_n": 10,
+      "spotcheck_A_B_agree": 10,
+      "action": "REMOVE_from_hotspot_table_document_as_FP_mode"
+    },
+    {
+      "channel": "Catfished",
+      "n_audited_flagged": 30,
+      "genuine_perpetrator_count": 1,
+      "genuine_fraction": 0.0333,
+      "wilson_low": 0.0059,
+      "wilson_high": 0.1667,
+      "spotcheck_n": 10,
+      "spotcheck_A_B_agree": 9,
+      "action": "REMOVE_from_hotspot_table_document_as_FP_mode"
+    },
+    {
+      "channel": "Samantha Bee",
+      "n_audited_flagged": 30,
+      "genuine_perpetrator_count": 2,
+      "genuine_fraction": 0.0667,
+      "wilson_low": 0.0185,
+      "wilson_high": 0.2132,
+      "spotcheck_n": 10,
+      "spotcheck_A_B_agree": 10,
+      "action": "REMOVE_from_hotspot_table_document_as_FP_mode"
+    },
+    {
+      "channel": "Turning Point USA",
+      "n_audited_flagged": 30,
+      "genuine_perpetrator_count": 1,
+      "genuine_fraction": 0.0333,
+      "wilson_low": 0.0059,
+      "wilson_high": 0.1667,
+      "spotcheck_n": 10,
+      "spotcheck_A_B_agree": 10,
+      "action": "REMOVE_from_hotspot_table_document_as_FP_mode"
+    }
+  ]
+}

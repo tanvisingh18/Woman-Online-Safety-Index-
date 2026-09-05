@@ -1,0 +1,3 @@
+I, [NAME], labelled the WOSI v2 annotation file assigned to Annotator A without access to the other annotator's labels and without access to classifier score columns. I did not discuss individual cases with the other annotator before submission of my raw file.
+
+Signature: _______________  Date: _______________

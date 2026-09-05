@@ -1,0 +1,7 @@
+platform,removal_rate,avg_response_hours,consistency_score,source,year
+Twitter,0.72,48.0,0.61,Twitter/X Transparency Report 2023,2023
+Reddit,0.68,72.0,0.55,Reddit Transparency Report 2023,2023
+YouTube,0.80,36.0,0.68,Google Transparency Report 2023,2023
+Telegram,0.15,720.0,0.20,Estimated — limited public moderation reporting; cite as estimate,2023
+Facebook,0.85,24.0,0.70,Meta Transparency Report Q4 2023 (PDR/RAS expert-coded; see mri_input_derivations),2023
+Gab,0.21,240.0,0.30,Expert-coded estimate — no public transparency report (secondary MRI panel only),2023

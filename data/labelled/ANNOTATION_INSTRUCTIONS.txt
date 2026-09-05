@@ -1,0 +1,19 @@
+HUMAN VALIDATION — required for thesis error bars
+================================================
+
+File: validation_sample.csv (~400 rows from live harsh scrapes)
+
+For each row, set:
+  human_label_gendered_harm  →  0 (not gendered harm) or 1 (gendered harm toward women)
+  human_label_role           →  perpetrator_attack | victim_disclosure | neutral_discourse
+  annotator_notes            →  optional free text
+
+When finished, run:
+  python src/validate_classifier.py --import-annotations data/labelled/validation_sample.csv
+
+This produces real precision/recall in outputs/results/classifier_validation.json
+under "human_scrape_validation".
+
+Do NOT use --auto-confirm for thesis — that copies model labels and gives F1=1.0 (circular).
+
+Independent check already automated: Detoxify cross-model agreement in classifier_validation.json

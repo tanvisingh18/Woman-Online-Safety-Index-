@@ -1,0 +1,7 @@
+platform,MRI_score,MRI_label,MRI_transparency_only,empirical_removal_rate,empirical_method
+Facebook,84.75,Highly Accountable,84.75,,transparency_only
+YouTube,81.5,Highly Accountable,81.5,,transparency_only
+Twitter,75.65,Highly Accountable,75.65,,transparency_only
+Reddit,59.91,Moderately Accountable,71.35,0.0,transparency_only
+Gab,36.95,Poorly Accountable,36.95,,transparency_only
+Telegram,11.75,Unaccountable,11.75,,transparency_only

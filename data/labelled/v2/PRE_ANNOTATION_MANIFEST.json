@@ -1,0 +1,52 @@
+{
+  "protocol": "docs/WOSI_ANNOTATION_PROTOCOL_V2.md",
+  "created_at": "2026-07-12T14:54:41.698465+00:00",
+  "sampling_seed": 20260712,
+  "n_rows": 200,
+  "excluded_june_validation_texts": 359,
+  "strata": {
+    "YouTube": [
+      70,
+      28,
+      21,
+      21
+    ],
+    "Reddit": [
+      70,
+      28,
+      21,
+      21
+    ],
+    "Telegram": [
+      40,
+      16,
+      12,
+      12
+    ],
+    "Twitter": [
+      20,
+      8,
+      6,
+      6
+    ]
+  },
+  "platform_counts": {
+    "Reddit": 70,
+    "YouTube": 70,
+    "Telegram": 40,
+    "Twitter": 20
+  },
+  "band_counts": {
+    "high": 80,
+    "low": 60,
+    "mid": 60
+  },
+  "sha256": {
+    "annotation_sample_master.csv": "9a9b0d8795eb89aade381cde71c7beb160a8ccb77ccdb7388e9f4aaac3fff1cb",
+    "annotator_A_blank.csv": "95f5be514b2653c401a4a940d01d6994958d05dc6f5808f7c67ae5a955bcf098",
+    "annotator_B_blank.csv": "41b8104af0cc8f7e596b47f3a56b9ed764692fe5a0b54ea47fc8ad9e6673b0ae",
+    "perpetrator_thresholds_frozen.json": "f501b708268b7e75f9eca9b94ae581cc59a0357a0b1dfa73c4b2263890510b04"
+  },
+  "classifier_columns_stripped_from_blank_files": true,
+  "june_360_status": "tuning/in-sample only \u2014 not for primary held-out metrics"
+}

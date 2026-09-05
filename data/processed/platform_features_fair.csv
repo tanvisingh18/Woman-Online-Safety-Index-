@@ -1,0 +1,5 @@
+platform,n_comments,n_harmful,harm_rate,gendered_harm_rate,toxicity,threat,frequency,normalization,gendered_targeting_ratio,viral_harm_score
+YouTube,2000,537,0.2685,0.2685,35.72,9.86,18.84,45.02,76.35,0.0
+Twitter,2000,904,0.452,0.452,32.37,12.98,31.64,17.5,98.34,0.0
+Reddit,2000,495,0.2475,0.2475,32.36,12.01,17.4,45.48,71.11,0.0
+Telegram,2000,109,0.0545,0.0545,23.02,10.25,3.81,48.58,63.3,0.0

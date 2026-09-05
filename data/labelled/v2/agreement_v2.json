@@ -1,0 +1,31 @@
+{
+  "completed_at": "2026-08-03T18:39:31.656005+00:00",
+  "n": 200,
+  "n_agree": 177,
+  "n_disputed_before_adjudication": 23,
+  "pct_disagree": 11.5,
+  "cohen_kappa_perpetrator_binary": 0.5881,
+  "cohen_kappa_harm_role_3class": 0.4487,
+  "n_adjudicated": 23,
+  "n_hard_flagged": 8,
+  "gold_positive_rate": 0.17,
+  "B_victim_codebook_fixes_applied": 17,
+  "faculty_band_note": "Healthy kappa target 0.55-0.85; stop if >0.95",
+  "action_taken": "adjudicated_disputes_wrote_gold_heldout",
+  "files": {
+    "gold": "data/labelled/v2/gold_heldout.csv",
+    "adjudication": "data/labelled/v2/adjudication_table.csv",
+    "disputes": "data/labelled/v2/disputes_v2.csv"
+  },
+  "confusion_A_rows_B_cols": [
+    [
+      155,
+      9
+    ],
+    [
+      14,
+      22
+    ]
+  ],
+  "STOP": false
+}
