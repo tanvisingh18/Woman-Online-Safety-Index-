@@ -1,0 +1,14 @@
+{
+  "t_sex": 0.55,
+  "t_sex_threat": 0.4,
+  "t_threat": 0.28,
+  "topic_veto": true,
+  "require_female_target": false,
+  "expand_victim": true,
+  "name": "path_a_june_selected_maxP_Rge0.5",
+  "status": "PATH_A_CANDIDATE_not_production_until_accepted",
+  "selected_by": "june_selected",
+  "ipw_weighted_precision": 0.4021,
+  "ipw_weighted_f1": 0.5176,
+  "note": "Tune on June only; eval IPW-v2. Do not overwrite frozen production without faculty sign-off."
+}

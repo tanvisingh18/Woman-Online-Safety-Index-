@@ -1,0 +1,20 @@
+{
+  "name": "perpetrator_thresholds_production",
+  "status": "FROZEN_for_heldout_eval",
+  "frozen_at": "2026-07-12",
+  "source": "PR-curve / F1 sweep on June validation_sample.csv (n=360) — IN-SAMPLE ONLY",
+  "sexist_proba": 0.40,
+  "sexist_with_threat": 0.34,
+  "threat_min": 0.28,
+  "legacy_edos_proxy": {
+    "sexist_proba": 0.52,
+    "sexist_with_threat": 0.45,
+    "threat_min": 0.38,
+    "note": "Pre-July operating point used in June 2026 progress report"
+  },
+  "evaluation_policy": {
+    "in_sample_june_360": "optimistic; report only as in-sample / tuning set",
+    "held_out_v2_200": "PRIMARY validity metrics after Protocol v2.0 annotation completes"
+  },
+  "code_constants": "src/gendered_harm_model.py PERP_SEXIST_THRESH / PERP_SEXIST_WITH_THREAT / PERP_THREAT_MIN"
+}
